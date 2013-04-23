@@ -1,42 +1,86 @@
 package pt.ulht.es.cookbook.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormat;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import pt.ulht.es.cookbook.domain.CookbookManager;
+import pt.ulht.es.cookbook.domain.Recipe;
+
 
 @Controller
 public class RecipeController {
   
-    @RequestMapping(method=RequestMethod.GET, value="/recipes")
-    public String listRecipes(Model model) {
+	
+	
+  
 
-        List<String> values = new ArrayList<String>();
-        values.add("Ola");
-        values.add("Mundo");        
-        model.addAttribute("items", values);
-        
-        return "listRecipes";
+    @RequestMapping(method=RequestMethod.GET, value="/recipes/create")
+    public String showRecipeCreationForm() {
+		return "createRecipe";   
     }
-    
     @RequestMapping(method=RequestMethod.GET, value="/recipes/{id}")
     public String showRecipe(Model model, @PathVariable String id) {
 
-        List<String> values = new ArrayList<String>();
-        values.add("Ola"+id);
-        values.add("Mundo"+id);        
-        model.addAttribute("items", values);
-        if(id.equals("42")) {
-        	return "detailedRecipe";
-		} else {
-			return "recipeNotFound";
-		}
+    	Recipe recipe=CookbookManager.getRecipe(id);
+    	model.addAttribute("recipe",recipe);
+    	if(recipe!=null){
+    	   return "detailedRecipe";
+    	}else{
+    		return "recipeNotFound";
+    	}
+       
     }
-        
-    
+       
+    @RequestMapping(method=RequestMethod.POST, value="/recipes")
+    public String createRecipe(Model model,@RequestParam Map<String,String>params) {
+    	String Titulo=params.get("Titulo");
+    	String Problema=params.get("Problema");
+    	String Solucao=params.get("Solucao");
+    	String Autor=params.get("Autor");
+    	Date now = new Date();
+    	String d=DateFormat.getInstance().format(now);
+    	Recipe recipe = new Recipe(Titulo,Problema,Solucao,Autor,d);
+    	
+    	if(!Titulo.isEmpty() && !Problema.isEmpty() && !Solucao.isEmpty()&& !Autor.isEmpty()){
+    	CookbookManager.saveRecipe(recipe);
+        	return "redirect:/recipes/"+recipe.getId();
+    	}else{
+    		model.addAttribute("Titulo",recipe.getTitulo());
+    		model.addAttribute("Problema",recipe.getProblema());
+    		model.addAttribute("Solucao",recipe.getSolucao());
+    		model.addAttribute("Autor",recipe.getAutor());
+    		model.addAttribute("Timestamp",recipe.getTimestamp());
+    		if(Titulo.isEmpty()){
+    			model.addAttribute("erroTitulo","Campo titulo obrigatorio");
+    	    }if(Problema.isEmpty()){
+    	    	model.addAttribute("erroProblema","Campo problema obrigatorio");
+    	    }if(Solucao.isEmpty()){
+    	    	model.addAttribute("erroSolucao","Campo solucao obrigatorio");
+    	    }
+	    	if(Autor.isEmpty()){
+		    	model.addAttribute("erroAutor","Campo Autor obrigatorio");
+		    }
+    	}
+    	
+   
+    	return "createRecipe";
+		
+		}
+    @RequestMapping(method=RequestMethod.GET, value="/recipes")
+    public String ListRecipes(Model model) {
+    	Collection<Recipe> recipes=CookbookManager.getRecipes();
+    	model.addAttribute("recipes",recipes);
+        	return "listRecipes";
+		
+		}
     
 }

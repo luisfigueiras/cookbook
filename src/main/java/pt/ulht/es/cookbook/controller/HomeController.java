@@ -13,11 +13,11 @@ public class HomeController {
   
 	@RequestMapping(method=RequestMethod.GET, value="/")
 	public String showHome(Model model) {
-
-        Date date = new Date(System.currentTimeMillis());
+		Date now = new Date();
+     //   Date date = new Date(System.currentTimeMillis());
         DateFormat df = DateFormat.getDateInstance();
-        model.addAttribute("currentTime", df.format(date));
-	    
+        model.addAttribute("currentTime", DateFormat.getInstance().format(now));
+      //  model.addAttribute("horas",DateFormat.getTimeInstance().format(now));
 		return "home";
 	}
 

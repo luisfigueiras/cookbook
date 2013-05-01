@@ -2,28 +2,30 @@
 
 <form method="POST" action="/recipes"> 
 
-<table width="700" >
+<table width="500" >
 <tr>
-    <td>Titulo</td>
-    <td><input type="text" value="${Titulo}" name="Titulo"/></td>
-    <td>${erroTitulo}</td>
+	<td width="100" > Autor </td>   
+	<td width="100" ><input type="text" value="${Autor}" name="Autor"/></td>
+	<td width="200" > <font color="#FF0000">${erroAutor}</font></td>
+</tr>
+
+<tr>
+    <td width="100" >Titulo</td>
+    <td width="100" ><input type="text" value="${Titulo}" name="Titulo"/></td>
+    <td width="200" ><font color="#FF0000">${erroTitulo}</font></td>
   </tr>
  <tr>
-    <td>Problema </td>
-    <td><input type="text" value="${Problema}" name="Problema"/></td>
-    <td> ${erroProblema}</td>
+    <td width="100" >Problema </td>
+    <td width="100" ><textarea rows="3" name="Problema" >${Problema}</textarea></td>
+    <td width="200" ><font color="#FF0000"> ${erroProblema}</font></td>
   </tr>
   <tr>
-    <td> Solucao </td>   
-    <td><input type="text" value="${Solucao}" name="Solucao"/></td>
-    <td>${erroSolucao}</td>
+    <td width="100" > Solucao </td>   
+    <td width="100" ><textarea rows="3" name="Solucao" >${Solucao}</textarea>
+    <td width="200" ><font color="#FF0000">${erroSolucao}</font></td>
    </tr>
    
-   <tr>
-    <td> Autor </td>   
-    <td><input type="text" value="${Autor}" name="Autor"/></td>
-    <td>${erroAutor}</td>
-   </tr>
+  
 	
 	<tr>
 	<td><input type="submit" value="Criar nova receita"/></td>

@@ -1,7 +1,10 @@
 package pt.ulht.es.cookbook.controller;
 
+import java.util.List;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 
@@ -75,12 +78,22 @@ public class RecipeController {
     	return "createRecipe";
 		
 		}
-    @RequestMapping(method=RequestMethod.GET, value="/recipes")
+    /* @RequestMapping(method=RequestMethod.GET, value="/recipes")
     public String ListRecipes(Model model) {
     	Collection<Recipe> recipes=CookbookManager.getRecipes();
     	model.addAttribute("recipes",recipes);
         	return "listRecipes";
 		
-		}
+		}*/
+   
+    @RequestMapping(method=RequestMethod.GET, value="/recipes")
+    public String ListRecipes(Model model) {
+     List<Recipe> SortedList = new ArrayList<Recipe>(CookbookManager.getRecipes());
+     Collections.sort( SortedList, new Recipe.CreationComparator());
+     model.addAttribute("recipes",SortedList);
+         return "listRecipes";
+  
+  }
+    
     
 }

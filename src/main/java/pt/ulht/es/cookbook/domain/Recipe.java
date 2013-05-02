@@ -1,5 +1,7 @@
 package pt.ulht.es.cookbook.domain;
 
+import java.util.Comparator;
+
 
 public class Recipe {
 
@@ -55,7 +57,10 @@ public class Recipe {
 
 	
 
-	
-	
+	 public static class CreationComparator implements Comparator<Recipe> {
 
+		  public int compare(Recipe r1, Recipe r2) {
+		   return (r1.titulo.compareTo(r2.titulo));
+		  }
+		 }
 }

@@ -2,14 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>COOKBOOK</title> 
+<title>Criar Receitas</title> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <html>
+<link rel="shortcut icon" href="/static/favicon.ico" />
 <body background="/static/BG.jpg">
 
 <center><a href="/">
-<img src="/static/Header.png" width="899"</a><center>
+<img src="/static/Header.png" width="899"></a><center>
 
+</head>
 
 <table  width=899px height=687px border="0"  cellpadding="1	" cellspacing="0" align="center">
 
@@ -80,52 +82,140 @@ border-bottom:3px solid #242424;
 </td>
 
 <tr>
+
 <td height="425" colspan="2" bgcolor="#242424">
 
 
 
 <form method="POST" action="/recipes"> 
 
-<table width="500" >
-<tr>
-	<td width="100" > Autor </td>   
-	<td width="100" ><input type="text" value="${Autor}" name="Autor"/></td>
-	<td width="200" > <font color="#FF0000">${erroAutor}</font></td>
-</tr>
 
-<tr>
-    <td width="100" >Titulo</td>
-    <td width="100" ><input type="text" value="${Titulo}" name="Titulo"/></td>
-    <td width="200" ><font color="#FF0000">${erroTitulo}</font></td>
-  </tr>
- <tr>
-<<<<<<< HEAD
-    <td>Problema </td>
-    <td><input type	="text" value="${Problema}" name="Problema"/></td>
-    <td> ${erroProblema}</td>
-=======
-    <td width="100" >Problema </td>
-    <td width="100" ><textarea rows="3" name="Problema" >${Problema}</textarea></td>
-    <td width="200" ><font color="#FF0000"> ${erroProblema}</font></td>
->>>>>>> origin/master
-  </tr>
-  <tr>
-    <td width="100" > Solucao </td>   
-    <td width="100" ><textarea rows="3" name="Solucao" >${Solucao}</textarea>
-    <td width="200" ><font color="#FF0000">${erroSolucao}</font></td>
-   </tr>
-   
-  
 	
-	<tr>
-	<td><input type="submit" value="Criar nova receita"/></td>
-	</tr>
+	<form>
+    <div class="box">
+      <h1>Crie a sua Receita :</h1>
+      <label>
+         <span>Autor</span>
+         <input type="text" class="input_text" name="Autor" value="${Autor}"/>
+         <font color="#FF0000"><small><i> ${erroAutor}</small></i></font>
+      </label>
+       <label>
+         <span>Título</span>
+         <input type="text" class="input_text" name="Titulo" value="${Titulo}"/>
+         <font color="#FF0000"><small><i> ${erroTitulo}</small></i></font>
+      </label>
+       <label>
+          <span>Problema</span>
+          <textarea class="message" name="Problema">${Problema}</textarea>
+          <font color="#FF0000"> <small><i>${erroProblema}</small></i></font>
+      </label>
+      <label>
+          <span>Solução</span>
+          <textarea class="message" name="Solucao">${Solucao}</textarea>
+          <font color="#FF0000"> <small><i>${erroSolucao}</small></i></font>
+          <input type="submit" class="button" value="Criar Receita" />
+      </label>
+      
+    
+   </div>
+</form>
+	
+	<style type="text/css">
+	<!--
+	*{ margin:0; padding:0;}
+	body{ font:100% normal Arial, Helvetica, sans-serif; }
+	form,input,select,textarea{margin:0; padding:0; color:#ffffff;}
+
+	div.box {
+	margin:0 auto;
+	width:500px;
+	background:#222222;
+	position:top;
+	top:50px;
+	border:1px solid #262626;
+	}
+
+	div.box h1 { 
+	color:#ffffff;
+	font-size:18px;
+	text-transform:uppercase;
+	padding:5px 0 5px 5px;
+	border-bottom:1px solid #161712;
+	border-top:1px solid #161712; 
+	}
+
+	div.box label {
+	width:100%;
+	display: block;
+	background:#1C1C1C;
+	border-top:1px solid #262626;
+	border-bottom:1px solid #161712;
+	padding:10px 0 10px 0;
+	}
+
+	div.box label span {
+	display: block;
+	color:#bbbbbb;
+	font-size:12px;
+	float:left;
+	width:100px;
+	text-align:right;
+	padding:5px 20px 0 0;
+	}
+
+	div.box .input_text {
+	padding:10px 10px;
+	width:200px;
+	background:#262626;
+	border-bottom: 1px double #171717;
+	border-top: 1px double #171717;
+	border-left:1px double #333333;
+	border-right:1px double #333333;
+	}
+
+	div.box .message{
+	padding:7px 7px;
+	width:350px;
+	background:#262626;
+	border-bottom: 1px double #171717;
+	border-top: 1px double #171717;
+	border-left:1px double #333333;
+	border-right:1px double #333333;
+	overflow:hidden;
+	height:150px;
+	input:focus { border: 1px solid #06c; }
+	input.error { border: 1px solid #c00; }
+	}
+
+	div.box .button
+	{
+	margin:0 0 10px 0;
+	padding:4px 7px;
+	background:#262626;
+	border:0px;
+	position: relative;
+	top:10px;
+	left:382px;
+	width:100px;
+	border-bottom: 1px double #C0C0C0;
+	border-top: 1px double #C0C0C0;
+	border-left:1px double #C0C0C0;
+	border-right:1px double #C0C0C0;
+	}
+	div.box .button:hover 
+	{
+	border: 1px double #C0C0C0;
+	background:#C0C0C0;
+	color:#262626;
+	cursor:pointer;
+	
+	
 	
 </table>
 
 </form>
 
-
+<td width="200" ><font color="#FF0000"> ${erroProblema}</font></td>
 
 
 </td>
@@ -134,5 +224,8 @@ border-bottom:3px solid #242424;
 <td bgcolor="#666362" colspan="2" height=30px width=1100px><font color="#FFFFFF">&nbsp;&nbsp; <font face="Tahoma"> Cookbook - Em Manutenção  </td>
 </tr>
 </table>
+</body>
+</html>
+
 
 

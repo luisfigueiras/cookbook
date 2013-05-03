@@ -63,14 +63,14 @@ public class RecipeController {
     		model.addAttribute("Autor",recipe.getAutor());
     		model.addAttribute("Timestamp",recipe.getTimestamp());
     		if(Titulo.isEmpty()){
-    			model.addAttribute("erroTitulo","Campo titulo obrigatorio");
+    			model.addAttribute("erroTitulo","*Este campo é obrigatorio");
     	    }if(Problema.isEmpty()){
-    	    	model.addAttribute("erroProblema","Campo problema obrigatorio");
+    	    	model.addAttribute("erroProblema","*Este campo é obrigatorio");
     	    }if(Solucao.isEmpty()){
-    	    	model.addAttribute("erroSolucao","Campo solucao obrigatorio");
+    	    	model.addAttribute("erroSolucao","*Este campo é obrigatorio");
     	    }
 	    	if(Autor.isEmpty()){
-		    	model.addAttribute("erroAutor","Campo Autor obrigatorio");
+		    	model.addAttribute("erroAutor","*Este campo é obrigatorio");
 		    }
     	}
     	
@@ -78,13 +78,7 @@ public class RecipeController {
     	return "createRecipe";
 		
 		}
-    /* @RequestMapping(method=RequestMethod.GET, value="/recipes")
-    public String ListRecipes(Model model) {
-    	Collection<Recipe> recipes=CookbookManager.getRecipes();
-    	model.addAttribute("recipes",recipes);
-        	return "listRecipes";
-		
-		}*/
+    
    
     @RequestMapping(method=RequestMethod.GET, value="/recipes")
     public String ListRecipes(Model model) {

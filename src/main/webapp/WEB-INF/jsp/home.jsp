@@ -5,13 +5,14 @@
 <title>COOKBOOK</title> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <html>
+<link rel="shortcut icon" href="/static/favicon.ico" />
 
 <body background="/static/BG.jpg">
 
 <center><a href="/">
-<img src="/static/Header.png" width="899"</a><center>
+<img src="/static/Header.png" width="899"></a><center>
 
-
+</head>
 <table  width=899px height=687px border="0"  cellpadding="1	" cellspacing="0" align="center">
 
 <tr>
@@ -96,4 +97,6 @@ border-bottom:3px solid #242424;
 </tr>
 </table>
 
+</body>
+</html>
 

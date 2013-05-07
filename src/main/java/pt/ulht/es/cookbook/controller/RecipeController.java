@@ -1,6 +1,6 @@
 package pt.ulht.es.cookbook.controller;
 
-import java.util.List;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;

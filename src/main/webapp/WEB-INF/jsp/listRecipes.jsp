@@ -88,7 +88,7 @@ border-bottom:3px solid #242424;
 <ul>
 <c:forEach var="recipe" items='${recipes}'>
 
-<a href="/recipes/${recipe.id}">${recipe.titulo}-ID(${recipe.id})</a> <br>
+<a href="/recipes/${recipe.id}"><font color="#ffffff">${recipe.titulo}-ID(${recipe.id})</font></a> <br>
 
 </c:forEach>
 

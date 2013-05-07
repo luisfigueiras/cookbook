@@ -84,13 +84,13 @@ border-bottom:3px solid #242424;
 
 <ul>
 <c:forEach var="item" items='${recipe.id}'>
-
+<font color="#ffffff">
     ID: ${recipe.id} <br>
     Titulo: ${recipe.titulo}<br>
     Solucao ${recipe.solucao}<br>
     Autor ${recipe.autor}<br>
     Timestamp ${recipe.timestamp}<br>
-
+</font>
 </c:forEach>
 </ul>
 

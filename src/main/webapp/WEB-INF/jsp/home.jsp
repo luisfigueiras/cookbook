@@ -49,7 +49,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#939393', end
 color: white;
 text-decoration: none;
 border-bottom:3px solid #cccccc;
-padding: 7px 54.75px;
+padding: 7px 54.92px;
 float:left;
 }
 
@@ -85,7 +85,7 @@ border-bottom:3px solid #242424;
 <td height="425" colspan="2" bgcolor="#242424">
 
 
-
+<img src="/static/homepic2.png" width="899"></a><center>
 
 
 

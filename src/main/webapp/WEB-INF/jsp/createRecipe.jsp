@@ -91,7 +91,7 @@ border-bottom:3px solid #242424;
 
 
 	
-	<form>
+	
     <div class="box">
       <h1>Crie a sua Receita :</h1>
       <label>
@@ -208,14 +208,13 @@ border-bottom:3px solid #242424;
 	background:#C0C0C0;
 	color:#262626;
 	cursor:pointer;
+	</style>
 	
 	
-	
-</table>
 
-</form>
 
-<td width="200" ><font color="#FF0000"> ${erroProblema}</font></td>
+
+
 
 
 </td>
@@ -223,7 +222,7 @@ border-bottom:3px solid #242424;
 <tr>
 <td bgcolor="#666362" colspan="2" height=30px width=1100px><font color="#FFFFFF">&nbsp;&nbsp; <font face="Tahoma"> Cookbook - Em Manutenção  </td>
 </tr>
-</table>
+
 </body>
 </html>
 

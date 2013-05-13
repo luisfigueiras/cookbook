@@ -1,66 +1,36 @@
 package pt.ulht.es.cookbook.domain;
-
 import java.util.Comparator;
 
+import org.joda.time.DateTime;
 
-public class Recipe {
 
-	private String id;
-	private String titulo;
-	private String problema;
-	private String solucao;
-	private String autor;
-	private String timestamp ;
-	public Recipe(String titulo, String problema, String solucao,String autor,String timestamp) {
-		this.titulo=titulo;
-		this.problema=problema;
-		this.solucao=solucao;
-		this.autor=autor;
-		this.timestamp=timestamp;
+public class Recipe extends Recipe_Base{
+	public Recipe() {
+		setCookbookManager(CookbookManager.getInstance());
 	}
 
-	
+		public Recipe(String titulo,String problema,String solucao,String autor,DateTime d) {
+			setCookbookManager(CookbookManager.getInstance());
+		
+			setTitulo(titulo);
+			setProblema(problema);
+			setSolucao(solucao);
+			setAutor(autor);
+			setTimestamp(new DateTime());
+		}
 
+		
+		public static class CreationComparator implements Comparator<Recipe> {
 
-	public String getTitulo() {
-		return titulo;
-	}
-
-	
-
-	public String getProblema() {
-		return problema;
-	}
-
-	
-	
-	public String getSolucao() {
-		return solucao;
-	}
-	public String getAutor() {
-		return autor;
-	}
-
-	public String getTimestamp() {
-		return timestamp;
-	}
-
-
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id=id;
-	}
-
-	
-
-	 public static class CreationComparator implements Comparator<Recipe> {
-
-		  public int compare(Recipe r1, Recipe r2) {
-		   return (r1.titulo.compareTo(r2.titulo));
-		  }
-		 }
+			public int compare(Recipe o1, Recipe o2) {
+				return o1.getTitulo().compareTo(o2.getTitulo());
+			}
+		}
+		
 }
+
+
+
+
+
+

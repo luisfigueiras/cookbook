@@ -83,9 +83,9 @@ border-bottom:3px solid #242424;
 <td height="425" colspan="2" bgcolor="#242424">
 
 <ul>
-<c:forEach var="item" items='${recipe.id}'>
+<c:forEach var="item" items='${recipe.titulo}'>
 <font color="#ffffff">
-    ID: ${recipe.id} <br>
+    ID: ${recipe.oid} <br>
     Titulo: ${recipe.titulo}<br>
     Solucao ${recipe.solucao}<br>
     Autor ${recipe.autor}<br>

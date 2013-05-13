@@ -86,9 +86,9 @@ border-bottom:3px solid #242424;
 <td height="425" colspan="2" bgcolor="#242424">
 
 <ul>
-<c:forEach var="recipe" items='${recipes}'>
+<c:forEach var="recipes" items='${recipes}'>
 
-<a href="/recipes/${recipe.id}"><font color="#ffffff">${recipe.titulo}-ID(${recipe.id})</font></a> <br>
+<a href="/recipes/${recipes.oid}">${recipes.titulo}</a> <br>
 
 </c:forEach>
 

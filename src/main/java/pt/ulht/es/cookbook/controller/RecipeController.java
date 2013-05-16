@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pt.ist.fenixframework.pstm.AbstractDomainObject;
+
 import pt.ulht.es.cookbook.domain.CookbookManager;
 import pt.ulht.es.cookbook.domain.Recipe;
+
 
 
 @Controller
@@ -83,7 +85,14 @@ public class RecipeController {
     	}
        
     }
-
     
+    
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}/delete")
+	public String deleteRecipe(@PathVariable("id") String id) {
+		Recipe recipe = AbstractDomainObject.fromExternalId(id);
+		recipe.delete();
+		CookbookManager.getInstance().removeRecipe(recipe);
+		return "redirect:/";
+	}
     
 }

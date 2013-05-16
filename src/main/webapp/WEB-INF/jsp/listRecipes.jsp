@@ -85,10 +85,15 @@ border-bottom:3px solid #242424;
 <tr>
 <td height="425" colspan="2" bgcolor="#242424">
 
+ 
+
 <ul>
 <c:forEach var="recipes" items='${recipes}'>
 
-<a href="/recipes/${recipes.oid}">${recipes.titulo}</a> <br>
+
+
+<a href="/recipes/${recipes.oid}"><font color="#FFFFFF">${recipes.titulo} </font></a> 
+<a href="/recipes/${recipes.oid}/delete"><font color="#FFFFFF"> apagar</font></a><br>
 
 </c:forEach>
 

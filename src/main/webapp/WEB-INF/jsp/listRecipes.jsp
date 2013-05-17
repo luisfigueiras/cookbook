@@ -106,7 +106,7 @@ border-bottom:3px solid #242424;
 </td>
 </tr> 
 <tr>
-<td bgcolor="#666362" colspan="2" height=30px width=1100px><font color="#FFFFFF">&nbsp;&nbsp; <font face="Tahoma"> Cookbook - Em Manutenção  </td>
+<td bgcolor="#666362" colspan="2" height=30px width=1100px><font color="#000000">&nbsp;&nbsp; <font face="Tahoma"> Cookbook - Em Manutenção  </td>
 </tr>
 </table>
 

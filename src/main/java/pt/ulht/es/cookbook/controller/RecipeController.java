@@ -17,6 +17,7 @@ import pt.ist.fenixframework.pstm.AbstractDomainObject;
 
 import pt.ulht.es.cookbook.domain.CookbookManager;
 import pt.ulht.es.cookbook.domain.Recipe;
+import pt.ulht.es.cookbook.domain.Tag;
 
 
 
@@ -34,7 +35,7 @@ public class RecipeController {
 
     @RequestMapping(method=RequestMethod.GET, value="/recipes")
     public String ListRecipes(Model model) {
-         List<Recipe> SortedList = new ArrayList<Recipe>(CookbookManager.getInstance().getRecipeSet());
+         List<Recipe> SortedList = new ArrayList<Recipe>(CookbookManager.getInstance().getRecipeSet());         
 	     Collections.sort( SortedList, new Recipe.CreationComparator());
 	     model.addAttribute("recipes",SortedList);
          return "listRecipes";
@@ -47,11 +48,15 @@ public class RecipeController {
     	String Problema=params.get("Problema");
     	String Solucao=params.get("Solucao");
     	String Autor=params.get("Autor");
+    	String TagRecipe=params.get("Tag");
     	DateTime d=new DateTime();
     	
     	
     	if(!Titulo.isEmpty() && !Problema.isEmpty() && !Solucao.isEmpty()&& !Autor.isEmpty()){
     		Recipe recipe = new Recipe(Titulo,Problema,Solucao,Autor,d);
+    		if(!TagRecipe.isEmpty()){
+    			recipe.addTag(TagRecipe);
+    		}
     		model.addAttribute("recipes", CookbookManager.getInstance().getRecipeSet());
     		return "redirect:/recipes/" + recipe.getOid();
     	}else{
@@ -59,6 +64,7 @@ public class RecipeController {
     		model.addAttribute("Problema",Problema);
     		model.addAttribute("Solucao",Solucao);
     		model.addAttribute("Autor",Autor);
+    		model.addAttribute("Tag",TagRecipe); 
     		
     		if(Titulo.isEmpty()){
     			model.addAttribute("erroTitulo","*Este campo é obrigatorio");
@@ -76,6 +82,8 @@ public class RecipeController {
     @RequestMapping(method=RequestMethod.GET, value="/recipes/{id}")
     public String showRecipe(Model model,@PathVariable("id") String id) {
     	Recipe recipe = AbstractDomainObject.fromExternalId(id);
+    	List<Tag> tagList = new ArrayList<Tag>(recipe.getTagSet());    	
+    	model.addAttribute("tag",tagList);
 
     	model.addAttribute("recipe",recipe);
     	if(recipe!=null){
@@ -92,7 +100,7 @@ public class RecipeController {
 		Recipe recipe = AbstractDomainObject.fromExternalId(id);
 		recipe.delete();
 		CookbookManager.getInstance().removeRecipe(recipe);
-		return "redirect:/";
+		return "listRecipes";
 	}
     
 }
